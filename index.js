@@ -3,6 +3,9 @@ const express = require('express');
 const app = express();
 const connection = require('./database/database');
 
+const categoriesController = require('./categories/CategoriesController');
+const articlesController = require('./articles/ArticlesController');
+
 const port = 3000;
 
 // View engine
@@ -24,10 +27,12 @@ connection
         console.log('Erro na conexão: ', err)
     })
 
+app.use("/", categoriesController);
+app.use("/", articlesController);
+
 // Rotas
 app.get('/', (req, res) => {
     res.render('index')
 })
-
 
 app.listen(port, () => console.log(`O servidor está rodando na porta ${port}!`))
