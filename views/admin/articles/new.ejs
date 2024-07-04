@@ -14,7 +14,7 @@
                     <input name="title" placeholder="Defina o título do artigo" class="form-control">                    
                 </div>
                 <div class="mb-3">
-                    <textarea role="5" name="body" class="form-control" placeholder="Escreva o artigho aqui"></textarea>
+                    <textarea name="body" id="article" class="form-control" placeholder="Escreva o artigho aqui"></textarea>
                 </div>
                 <div class="mb-3">
                     <button class="btn btn-success">Cadastrar</button>
@@ -25,3 +25,26 @@
 </div>
 
 <%- include ('../../partials/footer.ejs')  %>
+
+<script src="/tinymce/tinymce.min.js"></script>
+<script>
+
+    tinymce.init({
+        language: 'pt_BR',
+        selector: "#article",
+        plugins: [
+            'advlist',
+            'autolink',
+            'link',
+            'image',
+            'lists',
+            'print',
+            'preview',
+            'hr',
+            'save',
+            'table',
+            'emoticons'
+        ],
+    })
+
+</script>
