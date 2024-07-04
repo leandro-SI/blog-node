@@ -1,0 +1,15 @@
+body{
+    background-color: #eceff1;
+}
+
+.container {
+    width: 70%;
+}
+  
+.card {
+    margin: 0 auto;
+}
+
+.img-logo {
+    margin-left: 20px;
+}
