@@ -4,7 +4,6 @@ const slugify = require('slugify');
 const Category = require('./Category');
 
 
-
 // Rotas de Categories
 router.get('/admin/categories/new', (req, res) => {
     res.render('admin/categories/new')
@@ -19,8 +18,18 @@ router.post('/categories/save', (req, res) => {
 
     Category.create(data)
         .then((result) => {
-            res.redirect('/')
+            res.redirect('admin/categories/index')
         })
+})
+
+router.get('/admin/categories', (req, res) => {
+
+    Category.findAll({
+        raw: true
+    }).then((result) => {
+        res.render('admin/categories/index', { categories: result })
+    })
+
 })
 
 module.exports = router;
