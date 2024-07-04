@@ -18,7 +18,7 @@ router.post('/categories/save', (req, res) => {
 
     Category.create(data)
         .then((result) => {
-            res.redirect('admin/categories/index')
+            res.redirect('/admin/categories')
         })
 })
 
@@ -31,5 +31,27 @@ router.get('/admin/categories', (req, res) => {
     })
 
 })
+
+router.post('/categories/delete', (req, res) => {
+  
+    let id = req.body.id;
+
+    if (id != null) {
+        if (!isNaN(id)) {
+            Category.destroy({
+                where: {
+                    id: id
+                }
+            }).then((result) => {
+                res.redirect('/admin/categories')
+            })
+        } else {
+            res.redirect('/admin/categories')
+        }
+    } else {
+        res.redirect('/admin/categories')
+    }
+
+});
 
 module.exports = router;
