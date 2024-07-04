@@ -1,0 +1,27 @@
+<%- include ('../../partials/header.ejs')  %>
+<%- include ('../../partials/navbar.ejs')  %>
+
+<div class="container">
+    <hr>
+    <div class="card">
+        <div class="card-header">
+            <h2>Novo Artigo</h2>
+        </div>
+        <div class="card-body">
+            <form action="/categories/save" method="post">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Titulo</label>
+                    <input name="title" placeholder="Defina o título do artigo" class="form-control">                    
+                </div>
+                <div class="mb-3">
+                    <textarea role="5" name="body" class="form-control" placeholder="Escreva o artigho aqui"></textarea>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-success">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include ('../../partials/footer.ejs')  %>
