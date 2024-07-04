@@ -16,16 +16,16 @@
             </tr>
         </thead>
         <tbody>
-            <% categories.forEach(categorie => { %>
+            <% categories.forEach(category => { %>
                 <tr>
-                    <td><%= categorie.id %></td>
-                    <td><%= categorie.title %></td>
-                    <td><%= categorie.slug %></td>
+                    <td><%= category.id %></td>
+                    <td><%= category.title %></td>
+                    <td><%= category.slug %></td>
                     <td>
-                        <button class="btn btn-warning">Editar</button>
+                        <a href="/admin/categories/edit/<%= category.id %>" class="btn btn-warning">Editar</a>
                         
                         <form method="post" action="/categories/delete/" style="display: inline;" onsubmit="confirmarDelete(event)">
-                            <input type="hidden" name="id" value="<%= categorie.id %>">
+                            <input type="hidden" name="id" value="<%= category.id %>">
                             <button class="btn btn-danger">Deletar</button>
                         </form>
                     </td>
