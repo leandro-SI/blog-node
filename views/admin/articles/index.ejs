@@ -23,7 +23,12 @@
                 <td><%= article.title %></td>
                 <td><%= article.slug %></td>
                 <td><%= article.category.title %></td>
-                <td>Ações</td>
+                <td>
+                    <form method="post" action="/articles/delete/" style="display: inline;" onsubmit="confirmarDelete(event)">
+                        <input type="hidden" name="id" value="<%= article.id %>">
+                        <button class="btn btn-danger">Deletar</button>
+                    </form>
+                </td>
              </tr>
             <% }) %>
         </tbody>
@@ -35,7 +40,7 @@
     const confirmarDelete = (e) => {
         e.preventDefault();
 
-        var decision = confirm("Deseja realmente deletar essa categoria?")
+        var decision = confirm("Deseja realmente deletar este artigo?")
 
         if (decision) {
             e.target.submit();
