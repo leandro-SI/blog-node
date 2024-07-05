@@ -35,7 +35,10 @@ app.use("/", articlesController);
 
 // Rotas
 app.get('/', (req, res) => {
-    res.render('index')
+
+    Article.findAll().then((result) => {
+        res.render('index', { articles: result})        
+    })
 })
 
 app.listen(port, () => console.log(`O servidor está rodando na porta ${port}!`))
