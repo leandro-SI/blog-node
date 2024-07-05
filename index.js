@@ -41,4 +41,22 @@ app.get('/', (req, res) => {
     })
 })
 
+app.get('/:slug', (req, res) => {
+  var slug = req.params.slug
+
+  Article.findOne({
+    where: {
+        slug: slug
+    }
+  }).then((result) => {
+    if (result != undefined) {
+        res.render("article", { article: result });
+    } else {
+        res.redirect('/')
+    }
+  }).catch((err) => {
+    res.redirect('/')
+  })
+})
+
 app.listen(port, () => console.log(`O servidor está rodando na porta ${port}!`))
