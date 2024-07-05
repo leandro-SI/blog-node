@@ -36,7 +36,11 @@ app.use("/", articlesController);
 // Rotas
 app.get('/', (req, res) => {
 
-    Article.findAll().then((result) => {
+    Article.findAll({
+        order: [
+            ['id', 'DESC']
+        ]
+    }).then((result) => {
         res.render('index', { articles: result})        
     })
 })
