@@ -1,0 +1,39 @@
+<%- include ('../../partials/header.ejs')  %>
+<%- include ('../../partials/navbar.ejs')  %>
+
+<div class="container">
+    <hr>
+    <h2>Usuários</h2>
+    <a href="/admin/users/create" class="btn btn-success">Criar novo usuário</a>
+    <hr>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(user => { %>
+             <tr>
+                <td><%= user.id %></td>
+                <td><%= user.email %></td>
+                <td>
+                    <a href="/admin/users/edit/<%= user.id %>" id="editLink" class="btn btn-warning">Editar</a>
+                    <form method="post" action="/user/delete/" style="display: inline;">
+                        <input type="hidden" name="id" value="<%= user.id %>">
+                        <button disabled class="btn btn-danger">Deletar</button>
+                    </form>
+                </td>
+             </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+<%- include ('../../partials/footer.ejs')  %>
+
+<script>
+    document.getElementById("editLink").classList.add("disabled");
+</script>
