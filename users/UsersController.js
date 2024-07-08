@@ -80,4 +80,9 @@ router.post('/authenticate', function (req, res) {
 
 })
 
+router.get('/logout', (req, res) => {
+  req.session.user = undefined;
+  res.redirect('/')
+})
+
 module.exports = router;

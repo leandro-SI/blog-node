@@ -18,7 +18,7 @@ const port = 3000;
 app.use(session({
   secret: "66d3b64c2e8b0b99080681f94eec75cb78bd60f20e",
   cookie: {
-    maxAge: 30000
+    maxAge: 300000
   }
 }))
 
