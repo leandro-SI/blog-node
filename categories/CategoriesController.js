@@ -2,14 +2,15 @@ const express = require('express')
 const router = express.Router();
 const slugify = require('slugify');
 const Category = require('./Category');
+const adminAuth = require('../middlewares/adminAuth');
 
 
 // Rotas de Categories
-router.get('/admin/categories/new', (req, res) => {
+router.get('/admin/categories/new', adminAuth, (req, res) => {
     res.render('admin/categories/new')
 })
 
-router.post('/categories/save', (req, res) => {
+router.post('/categories/save', adminAuth, (req, res) => {
     
     let data = {
         title: req.body.title,
@@ -22,7 +23,7 @@ router.post('/categories/save', (req, res) => {
         })
 })
 
-router.get('/admin/categories', (req, res) => {
+router.get('/admin/categories', adminAuth, (req, res) => {
 
     Category.findAll({
         raw: true
@@ -32,7 +33,7 @@ router.get('/admin/categories', (req, res) => {
 
 })
 
-router.post('/categories/delete', (req, res) => {
+router.post('/categories/delete', adminAuth, (req, res) => {
   
     let id = req.body.id;
 
@@ -54,7 +55,7 @@ router.post('/categories/delete', (req, res) => {
 
 });
 
-router.get('/admin/categories/edit/:id', (req, res) => {
+router.get('/admin/categories/edit/:id', adminAuth, (req, res) => {
     var id = req.params.id;
 
     if (isNaN(id))
@@ -72,7 +73,7 @@ router.get('/admin/categories/edit/:id', (req, res) => {
 
 })
 
-router.post('/categories/update', (req, res) => {
+router.post('/categories/update', adminAuth, (req, res) => {
 
     let data = {
         id: req.body.id,
