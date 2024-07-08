@@ -14,6 +14,14 @@ const User = require('./users/User');
 
 const port = 3000;
 
+// Sessions
+app.use(session({
+  secret: "66d3b64c2e8b0b99080681f94eec75cb78bd60f20e",
+  cookie: {
+    maxAge: 30000
+  }
+}))
+
 // View engine
 app.set('view engine', 'ejs')
 
@@ -36,6 +44,22 @@ connection
 app.use("/", categoriesController);
 app.use("/", articlesController);
 app.use("/", usersController);
+
+// app.get('/session', (req, res) => {
+//   req.session.treinamento = "Formação Node.js"
+//   req.session.email = "leo@gmail.com"
+//   req.session.user = {
+//     username: "leozin",
+//     email: "mail@mail.com",
+//     id: 10
+//   }
+
+//   res.send('Sessão Gerada')
+// })
+
+// app.get('/leitura', (req, res) => {
+//   res.json(req.session)
+// })
 
 // Rotas
 app.get('/', (req, res) => {
